@@ -1,0 +1,55 @@
+/* app css stylesheet */
+
+/*.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}*/
+
+/*body {
+	background-color: #cfcbbf;
+	background-image: url(/images/bg4_2.png);
+}*/
+
+#signupContent {
+	max-width: 600px;
+	backgroud-color: white;
+	border-radius: 4px;
+}
+
+/*@media screen and (max-width: 600px) {
+	#SignupContent {
+		height: 100%;
+	}
+	#materialToolbar {
+		padding: 10px;
+	}
+}*/
+
+#avatar {
+	margin-top: 4%;
+    background-image: url('http://i.stack.imgur.com/Dj7eP.jpg');
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
