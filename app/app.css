@@ -29,12 +29,6 @@
 	background-image: url(/images/bg4_2.png);
 }*/
 
-#signupContent {
-	max-width: 600px;
-	backgroud-color: white;
-	border-radius: 4px;
-}
-
 /*@media screen and (max-width: 600px) {
 	#SignupContent {
 		height: 100%;
@@ -44,12 +38,28 @@
 	}
 }*/
 
+#signupContent {
+  max-width: 600px;
+  backgroud-color: white;
+  border-radius: 4px;
+}
+
 #avatar {
 	margin-top: 4%;
-    background-image: url('http://i.stack.imgur.com/Dj7eP.jpg');
-    width: 150px;
-    height: 150px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
+  background-image: url('http://i.stack.imgur.com/Dj7eP.jpg');
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+#user {
+  margin-top: 2%;
+  background-image: url('http://i.stack.imgur.com/Dj7eP.jpg');
+  width: 90px;
+  height: 90px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
 }

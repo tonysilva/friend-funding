@@ -1,1 +1,64 @@
-<p>Essa é a parte para a home.</p>
+<md-toolbar class="md-hue-2">	
+	<div class="md-toolbar-tools">
+		<h2 flex md-truncate>Friend Funding</h2>
+		<md-button class="md-icon-button" aria-label="account">
+		  <i class="material-icons">account_box</i>
+		</md-button>
+	</div>
+</md-toolbar>
+
+<md-list ng-cloak>
+	<md-subheader class="md-no-sticky">Olá Mona,</md-subheader>
+	<md-list-item ng-click="" class="noright">
+		<img src="http://i.stack.imgur.com/Dj7eP.jpg" class="md-avatar" />
+		<md-input-container flex="100">
+			<label>Desejo</label>
+			<input type="text" name="desejo" ng-model="desejo" placeholder="Qual é o seu desejo?" />
+		</md-input-container>
+		<i class="material-icons">send</i>
+	</md-list-item>
+</md-list>
+
+<div layout="row" layout-xs="column">
+	<div flex="40">
+		<md-subheader class="md-no-sticky">Seus amigos</md-subheader>	
+		<md-grid-list
+	        md-cols="4" md-cols-sm="4" md-cols-md="5" md-cols-gt-md="2"
+	        md-row-height-gt-md="1:1" md-row-height="1:1"
+	        md-gutter="1px" md-gutter-gt-sm="1px">
+		    
+		    <md-grid-tile ng-repeat="value in friends"
+		    			  md-rowspan="1"
+		                  md-colspan="1"
+		                  md-colspan-sm="1"
+		                  md-colspan-xs="1"
+		                  ng-class="tile.background">
+		      <img src="http://lorempixel.com/100/100/" height="80" width="80" class="md-avatar" />
+		      <!-- <md-grid-tile-footer><h3>Mona</h3></md-grid-tile-footer> -->
+		    </md-grid-tile>
+
+	  	</md-grid-list>
+	</div>
+	
+	<div flex>	
+	    <!-- <md-toolbar layout="row" class="md-hue-2">
+	      <div class="md-toolbar-tools">
+	        <span>Desejos dos seus amigos</span>
+	      </div>
+	    </md-toolbar> -->
+	    <md-content>
+		    <md-list class="md-dense" flex>
+		        <md-subheader class="md-no-sticky">Contribua com os desejos de seus amigos</md-subheader>
+		        <md-list-item class="md-3-line" ng-repeat="(key, value) in wishes">
+		          <img src="http://i.stack.imgur.com/Dj7eP.jpg" class="md-avatar" alt="wish" />
+		          <div class="md-list-item-text" layout="column">
+		            <h3>Desejo</h3>
+		            <h4>Descrição</h4>
+		            <p>Valor</p>
+		          </div>
+		          <i class="material-icons md-secondary">loyalty</i>
+		        </md-list-item>
+			</md-list>
+		</md-content>
+	</div>
+</div>

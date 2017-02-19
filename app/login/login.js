@@ -9,7 +9,7 @@ angular.module('hackathon.login', ['ngRoute'])
   });
 }])
 
-.controller('LoginCtrl', function($scope, $http) {
+.controller('LoginCtrl', function($scope, $http, $location, app) {
 
 	$scope.user = {
 		username: '',
@@ -31,28 +31,27 @@ angular.module('hackathon.login', ['ngRoute'])
 
 	$scope.login = function(valid) {
 		if (valid) {
-			$http.post("http://192.168.1.180:8080/login", $scope.user)
+			debugger;
+			$http.post(app.domain + "/login", $scope.user)
 		    .then(function(response) {
 		    	var authorization = response.headers();
-		        sessionStorage.setItem(authorization['authorization']);
+		        sessionStorage.setItem("token", authorization['authorization']);
+		        delete $scope.user;
+		    	$location.path("/home");
 		    });
-		    delete $scope.user;
-		    $scope.userForm.$setPristine();
-		    $scope.userForm.$setUntouched();
+		    
 		}
 	}
 
 	$scope.createUser = function(valid) {
 		if (valid) {
-			$http.post("http://192.168.1.180:8080/users", $scope.newUser)
+			$http.post(app.domain + "/users", $scope.newUser)
 		    .then(function(response) {
 		    	$scope.user.username = $scope.newUser.username;
-		    	$scope.user.password = $scope.newUser.password;
+		    	$scope.user.password = $scope.newUser.password;		        
+		        delete $scope.newUser;
 		        $scope.login(true);
-		    });
-		    delete $scope.newUser;
-		    $scope.userForm.$setPristine();
-		    $scope.userForm.$setUntouched();
+		    });		    
 		}		
 	}
 

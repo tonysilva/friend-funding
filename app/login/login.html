@@ -36,7 +36,7 @@
 				<div layout="row" layout-sm="column">
 					<md-input-container flex-gt-sm flex-xs="100">
 						<label>Username</label>
-						<input required type="text" name="username" ng-model="user.username" placeholder="your username" />
+						<input required type="text" name="username" ng-model="newUser.username" placeholder="your username" />
 						<div ng-messages="newUserForm.username.$error" role="alert">
 							<div ng-message="required" class="my-message">Nome de usuário é necessario</div>
 						</div>
@@ -45,7 +45,7 @@
 				<div layout="row" layout-sm="column">
 					<md-input-container flex-gt-sm flex-xs="100">
 						<label>Password</label>
-						<input name="password" ng-model="user.password" type="password" required placeholder="********">
+						<input name="password" ng-model="newUser.password" type="password" required placeholder="********">
 						<div ng-messages="newUserForm.password.$error" role="alert" multiple>
 							<div ng-message="required">Senha é necessária</div>
 						</div>
@@ -54,7 +54,7 @@
 				<div layout="row" layout-sm="column">
 					<md-input-container flex-gt-sm flex-xs="100">
 						<label>Name</label>
-						<input required type="text" name="name" ng-model="user.name" placeholder="your full name" />
+						<input required type="text" name="name" ng-model="newUser.name" placeholder="your full name" />
 						<div ng-messages="newUserForm.name.$error" role="alert">
 							<div ng-message="required" class="my-message">Nome de usuário é necessario</div>
 						</div>
@@ -63,7 +63,7 @@
 				<div layout="row" layout-sm="column">
 					<md-input-container flex-gt-sm flex-xs="100">
 						<label>E-mail</label>
-						<input required type="email" name="email" ng-model="user.email" ng-pattern="/^[_a-z0-9-+]+(\.[_a-z0-9-+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="someone@example.com" />
+						<input required type="email" name="email" ng-model="newUser.email" ng-pattern="/^[_a-z0-9-+]+(\.[_a-z0-9-+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="someone@example.com" />
 						<div ng-messages="newUserForm.email.$error" role="alert">
 							<div ng-message="required" class="my-message">E-mail é necessário</div>
 							<div ng-message-exp="['email', 'pattern']">E-mail com padrão incorreto</div>

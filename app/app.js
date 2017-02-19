@@ -1,6 +1,5 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
 angular.module('hackathon', [
   'ngRoute',
   'hackathon.home',
@@ -9,16 +8,16 @@ angular.module('hackathon', [
   'ngMaterial',
   'ngResource'
 ]).
-
+.service('app', function () {
+  this.domain = 'http://192.168.1.180:8080';
+})
 config(function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
   $routeProvider.otherwise({redirectTo: '/home'});
 })
-
 .config(function ($httpProvider) {
     $httpProvider.interceptors.push('MyAuthRequestInterceptor');
 })
-
 .factory('MyAuthRequestInterceptor',
     function ($q, $location) {
         return {
@@ -30,7 +29,6 @@ config(function ($locationProvider, $routeProvider) {
                 return config || $q.when(config);
             },
             responseError: function(rejection) {
-                //console.log("Found responseError: ", rejection);
                 if (rejection.status == 401) {
                     //console.log("Access denied (error 401), please login again");
                     //$location.nextAfterLogin = $location.path();
