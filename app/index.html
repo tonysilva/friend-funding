@@ -30,8 +30,11 @@
           <md-toolbar class="md-hue-2" ng-if="status"> 
             <div class="md-toolbar-tools">
               <h2 flex md-truncate>Friend Funding</h2>
-              <md-button class="md-icon-button" aria-label="account" ng-click="logout()">
-                <i class="material-icons">account_box</i>
+              <md-button class="md-icon-button" aria-label="home" ng-click="back()">
+                <i class="material-icons">home</i>
+              </md-button>
+              <md-button class="md-icon-button" aria-label="exit" ng-click="logout()">
+                <i class="material-icons">exit_to_app</i>
               </md-button>
             </div>
           </md-toolbar>
@@ -53,10 +56,13 @@
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
   <script src="/bower_components/angular-material/angular-material.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/bower_components/angular-base64-upload/dist/angular-base64-upload.js"></script>
   <script src="app.js"></script>
   <script src="system.module.js"></script>
   <script src="home/home.js"></script>
-  <script src="login/login.js"></script>  
+  <script src="login/login.js"></script>
+  <script src="wish/wish.js"></script> 
+  <script src="contribution/contribution.js"></script>   
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>

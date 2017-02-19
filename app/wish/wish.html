@@ -1,0 +1,38 @@
+<div layout-padding layout="row" layout-align="center center">
+	<div flex="50">
+		<form name="wishForm" ng-submit="newWish(wishForm.$valid)" enctype="multipart/form-data">
+			<div layout="row" layout-sm="column">
+				<md-input-container flex-gt-sm flex-xs="100">
+					<label>Nome</label>
+					<input type="text" name="nome" ng-model="wish.name" placeholder="titulo para o desejo" />
+				</md-input-container>
+			</div>
+			<div layout="row" layout-sm="column">
+				<md-input-container flex-gt-sm flex-xs="100">
+					<label>Descrição</label>
+					<input type="text" md-maxlength="255" name="descricao" ng-model="wish.description" placeholder="descrição do desejo" />
+					<div ng-messages="wishForm.descricao.$error">
+						<div ng-message="md-maxlength">A descrição deve ter no maximo 255 caracteres.</div>
+					</div>
+				</md-input-container>
+			</div>
+			<div layout="row" layout-sm="column">
+				<md-input-container flex-gt-sm flex-xs="100">
+					<label>URL</label>
+					<input type="text" name="url" ng-model="wish.url" placeholder="http://dominio/seudesejo" />
+				</md-input-container>
+				<md-input-container flex-gt-sm flex-xs="100">
+					<label>Valor</label>
+					<input type="number" step="0.01" min="0.01" name="totalValue" ng-model="wish.totalValue" placeholder="valor do desejo" />
+				</md-input-container>
+			</div>
+			<div layout="row" layout-sm="column" style="margin-left: -15px;">
+				<md-input-container flex-gt-sm flex-xs="100">
+					<label>Prazo</label>
+					<md-datepicker  ng-model="wish.dueDate"></md-datepicker>
+				</md-input-container>
+			</div>
+			<md-button class="md-raised md-primary" style="width:100%; margin: 0px 0px;" type="submit" ng-disabled="wishForm.$invalid">Save</md-button>			
+		</form>
+	</div>
+</div>

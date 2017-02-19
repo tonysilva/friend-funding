@@ -5,12 +5,29 @@ angular.module('hackathon', [
   'hackathon.home',
   'hackathon.login',
   'hackathon.system',
+  'hackathon.wish',
+  'hackathon.contribution',
   'hackathon.version',
   'ngMaterial',
-  'ngResource'
+  'ngResource',
+  'naif.base64'
 ])
 .service('app', function () {
   this.domain = 'http://192.168.1.180:8080';
+})
+.run(function($rootScope, $location, System) {
+  $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute) {
+    var logged = sessionStorage.getItem('token') ? true : false;
+    var appTo = currRoute.$$route.originalPath;
+    debugger;    
+    if (appTo != '/login' && !logged) {
+      event.preventDefault();
+      $location.path('/login');
+    } 
+    if (appTo == '/login' && logged) {
+      $location.path('/home');
+    }
+  });
 })
 .config(function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
@@ -24,31 +41,16 @@ angular.module('hackathon', [
         return {
             'request': function (config) {
                 if (sessionStorage.getItem('token')) {
-                    //console.log("token["+window.localStorage.getItem('accessToken')+"], config.headers: ", config.headers);
                     config.headers.authorization = sessionStorage.getItem('token');
                 }
                 return config || $q.when(config);
             },
             responseError: function(rejection) {
                 if (rejection.status == 401) {
-                    //console.log("Access denied (error 401), please login again");
-                    //$location.nextAfterLogin = $location.path();
                     $location.path('/login');
                 }
                 return $q.reject(rejection);
             }
         }
     }
-)
-
-.run(function($rootScope, $location, System) {
-    $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute) {
-      debugger;
-      var logged = System.status;
-      var appTo = currRoute.$$route.originalPath;
-      if(appTo != '/login' && !logged) {
-          event.preventDefault();
-          $location.path('/login');
-      }
-    });
-});
+);

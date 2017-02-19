@@ -1,35 +1,50 @@
 <md-list ng-cloak layout-padding>
 	<md-list-item ng-click="" class="noright">
-		<img src="http://i.stack.imgur.com/Dj7eP.jpg" class="md-avatar" />
+		<img src="http://i.stack.imgur.com/Dj7eP.jpg" class="md-avatar" style="width: 80px; height: 80px;" />
 		<md-input-container flex="100">
 			<label>Desejo</label>
-			<input type="text" name="desejo" ng-model="desejo" placeholder="Qual é o seu desejo?" />
+			<input type="text" name="desejo" ng-model="wish" placeholder="Qual é o seu desejo?" />
 		</md-input-container>		
-		<md-button class="md-icon-button" ng-click="someFunc()">		
+		<md-button class="md-icon-button" ng-click="openWish(wish)">		
 			<i class="material-icons">send</i>
 		</md-button>
 	</md-list-item>
 </md-list>
 
 <div layout="row" layout-xs="column">
-	<div flex="40" flex-xs="40">
-		<md-subheader class="md-no-sticky">Seus Amigos</md-subheader>	
-		<md-grid-list
-	        md-cols="4" md-cols-sm="4" md-cols-md="5" md-cols-gt-md="2"
-	        md-row-height-gt-md="1:1" md-row-height="1:1"
-	        md-gutter="1px" md-gutter-gt-sm="1px">
-		    
-		    <md-grid-tile ng-repeat="value in friends"
-		    			  md-rowspan="1"
-		                  md-colspan="1"
-		                  md-colspan-sm="1"
-		                  md-colspan-xs="1"
-		                  ng-class="tile.background">
-		      <img src="http://lorempixel.com/100/100/" height="80" width="80" class="md-avatar" />
-		      <!-- <md-grid-tile-footer><h3>Mona</h3></md-grid-tile-footer> -->		      
-		    </md-grid-tile>
-			
-	  	</md-grid-list>
+	<div layout="column" flex="40" flex-xs="40">
+		<div flex>
+			<md-content>
+			    <md-list class="md-dense" flex>
+			        <md-subheader class="md-no-sticky">Meus Desejos</md-subheader>
+			        <md-list-item class="md-3-line" ng-repeat="(key, value) in myWishes | orderBy : '-creationDate'">
+						<div class="md-list-item-text" layout="column" layout-fill>
+							<h3>{{value.profile.name}} em {{value.creationDate | date: 'dd MMMM, yyyy'}}</h3>
+							<h3 class="md-title">{{value.name}}</h3>
+							<h4 class="md-body-2">{{value.description}}</h4>
+							<p>{{value.totalValue | currency : R$ }}</p>
+						</div>						
+			        </md-list-item>
+				</md-list>
+			</md-content>
+		</div>
+		<div flex>
+			<md-subheader class="md-no-sticky">Seus Amigos</md-subheader>	
+			<md-grid-list
+			    md-cols="4" md-cols-sm="4" md-cols-md="5" md-cols-gt-md="2"
+			    md-row-height-gt-md="1:1" md-row-height="1:1"
+			    md-gutter="2px" md-gutter-gt-sm="2px">		    
+			    <md-grid-tile ng-repeat="value in friends"
+			    			  md-rowspan="1"
+			                  md-colspan="1"
+			                  md-colspan-sm="1"
+			                  md-colspan-xs="1"
+			                  ng-class="tile.background">
+			      <img data-ng-src="data:image/jpg;base64,{{value.profileImg}}" data-err-src="img/profile.jpg" height="80" width="80" class="md-avatar" />
+			      <md-grid-tile-footer><h3>{{value.name}}</h3></md-grid-tile-footer>		      
+			    </md-grid-tile>			
+			</md-grid-list>
+		</div>
 	</div>
 	
 	<div flex>	
@@ -41,16 +56,18 @@
 	    <md-content>
 		    <md-list class="md-dense" flex>
 		        <md-subheader class="md-no-sticky">Contribua Para os Desejos de Seus Amigos</md-subheader>
-		        <md-list-item class="md-3-line" ng-repeat="(key, value) in wishes">
+		        <md-list-item class="md-3-line" ng-repeat="(key, value) in wishes | orderBy : '-creationDate'">
 					<img src="http://i.stack.imgur.com/Dj7eP.jpg" class="md-avatar" alt="wish" />
-					<div class="md-list-item-text" layout="column">
-						<h3>Desejo</h3>
-						<h4>Descrição</h4>
-						<p>Valor</p>
+					<div class="md-list-item-text" layout="column" layout-fill>
+						<h3>{{value.profile.name}} em {{value.creationDate | date: 'dd MMMM, yyyy'}}</h3>
+						<h3>{{value.name}}</h3>
+						<h4>{{value.description}}</h4>
+						<p>{{value.totalValue | currency : R$ }}</p>
 					</div>
 					<md-button class="md-icon-button" ng-click="someFunc()">						
 						<i class="material-icons">loyalty</i>
 					</md-button>
+					<md-divider></md-divider>
 		        </md-list-item>
 			</md-list>
 		</md-content>

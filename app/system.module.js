@@ -2,14 +2,12 @@
 
 angular.module('hackathon.system', [])
 
-.factory('System', function ($location, $route, $templateCache) {
+.factory('System', function ($location, $window) {
         return {
             'status': sessionStorage.getItem('token') ? true : false,
             'logout': function () {
                 sessionStorage.removeItem('token');
-                var currentPageTemplate = $route.current.templateUrl;
-				$templateCache.remove(currentPageTemplate);
-				$route.reload();
+                $window.location.reload();
         	},
     	}
 	}

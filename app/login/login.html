@@ -23,20 +23,24 @@
 						</div>
 					</md-input-container>
 				</div>
-				<md-button class="md-raised md-primary" style="width:100%; margin: 0px 0px;" type="submit" ng-disabled="userForm.$invalid">Login</md-button>					
+				<md-button class="md-raised md-primary button-login" type="submit" ng-disabled="userForm.$invalid">Login</md-button>					
 				<md-content layout-padding>	
 					<md-button md-no-ink class="md-primary" ng-click="newAccount()">Do not have an account? Sign Up</md-button>
 				</md-content>
-				<md-button class="md-raised md-primary" ng-href="" target="_blank" style="width:100%; margin: 15px 0px 0px 0px;">Sign In With Facebook</md-button>
+				<md-button class="md-raised md-primary button-login" ng-href="" target="_blank">Sign In With Facebook</md-button>
 			</form>
 		</div>
 	
 		<div layout-padding ng-if="notAccount">
-			<form name="newUserForm" ng-submit="createUser(newUserForm.$valid)" enctype="multipart/form-data">
-				<div layout="row" layout-sm="column">
+			<form name="newUserForm" ng-submit="createUser(profileImg)" enctype="multipart/form-data">
+				<md-content layout="column">
+					<label>Foto de Perfil</label>
+					<input type="file" name="file" ng-model="profileImg" base-sixty-four-input accept="image/jpg">
+				</md-content><br>
+				<div layout="row" layout-sm="column">					
 					<md-input-container flex-gt-sm flex-xs="100">
 						<label>Username</label>
-						<input required type="text" name="username" ng-model="newUser.username" placeholder="your username" />
+						<input required type="text" name="username" ng-model="newUser.username" placeholder="Fulano" />
 						<div ng-messages="newUserForm.username.$error" role="alert">
 							<div ng-message="required" class="my-message">Nome de usuário é necessario</div>
 						</div>
@@ -54,7 +58,7 @@
 				<div layout="row" layout-sm="column">
 					<md-input-container flex-gt-sm flex-xs="100">
 						<label>Name</label>
-						<input required type="text" name="name" ng-model="newUser.name" placeholder="your full name" />
+						<input required type="text" name="name" ng-model="newUser.profile.name" placeholder="Fulano Sicrano" />
 						<div ng-messages="newUserForm.name.$error" role="alert">
 							<div ng-message="required" class="my-message">Nome de usuário é necessario</div>
 						</div>
@@ -63,14 +67,14 @@
 				<div layout="row" layout-sm="column">
 					<md-input-container flex-gt-sm flex-xs="100">
 						<label>E-mail</label>
-						<input required type="email" name="email" ng-model="newUser.email" ng-pattern="/^[_a-z0-9-+]+(\.[_a-z0-9-+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="someone@example.com" />
+						<input required type="email" name="email" ng-model="newUser.profile.email" placeholder="someone@example.com" />
 						<div ng-messages="newUserForm.email.$error" role="alert">
 							<div ng-message="required" class="my-message">E-mail é necessário</div>
 							<div ng-message-exp="['email', 'pattern']">E-mail com padrão incorreto</div>
 						</div>
 					</md-input-container>
 				</div>	
-				<md-button class="md-raised md-primary" style="width:100%; margin: 0px 0px;" type="submit" ng-disabled="newUserForm.$invalid">Save</md-button>
+				<md-button class="md-raised md-primary button-login" type="submit" ng-disabled="false">Save</md-button>
 			</form>
 		</div>
 

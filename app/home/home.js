@@ -9,18 +9,35 @@ angular.module('hackathon.home', ['ngRoute'])
   });
 }])
 
-.controller('HomeCtrl', function($scope) {
+.controller('HomeCtrl', function($scope, $http, app, $location, WishService) {
 
 	$scope.friends = [];
-	for (var i = 0; i < 30; i++) {
-      var friend = {}
-      $scope.friends.push(friend);
-    }
+  $scope.wishes = [];
+  $scope.myWishes = [];
 
-    $scope.wishes = [];
-	for (var i = 0; i < 8; i++) {
-      var wish = {}
-      $scope.wishes.push(wish);
-    }
+  $http.get(app.domain + "/wishes")
+  .then(function(response) {
+    $scope.wishes = response.data;
+  });
+
+  $http.get(app.domain + "/profiles/friends")
+  .then(function(response) {
+    $scope.friends = response.data;
+  });
+
+  $http.get(app.domain + "/wishes/mine")
+  .then(function(response) {
+    $scope.myWishes = response.data;
+  });
+
+  $scope.openWish = function(wishName) {
+    WishService.setName(wishName);
+    $location.path("/wish");
+  }
+
+  $scope.openContribution = function(wish) {
+    ContributionService.setWish(wish);
+    $location.path("/contribution");
+  }
 
 });

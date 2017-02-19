@@ -9,7 +9,7 @@ angular.module('hackathon.login', ['ngRoute'])
   });
 }])
 
-.controller('LoginCtrl', function($scope, $http, $location, app) {
+.controller('LoginCtrl', function($scope, $http, $location, app, $window) {
 
 	$scope.user = {
 		username: '',
@@ -22,6 +22,7 @@ angular.module('hackathon.login', ['ngRoute'])
 		profile: {
 			name: '',
 			email: '',
+			profileImg: '',
 		},
 	}
 
@@ -36,22 +37,23 @@ angular.module('hackathon.login', ['ngRoute'])
 		    	var authorization = response.headers();
 		        sessionStorage.setItem("token", authorization['authorization']);
 		        delete $scope.user;
-		    	$location.path("/home");
+		    	$window.location.reload();
 		    });
 		    
 		}
 	}
 
-	$scope.createUser = function(valid) {
-		if (valid) {
-			$http.post(app.domain + "/users", $scope.newUser)
-		    .then(function(response) {
-		    	$scope.user.username = $scope.newUser.username;
-		    	$scope.user.password = $scope.newUser.password;		        
-		        delete $scope.newUser;
-		        $scope.login(true);
-		    });		    
-		}		
+	$scope.createUser = function(profileImg) {
+		$scope.newUser.profile.profileImg = profileImg.base64;
+		$http.post(app.domain + "/users", $scope.newUser)
+	    .then(function(response) {
+	    	$scope.user.username = $scope.newUser.username;
+	    	$scope.user.password = $scope.newUser.password;		        
+	        delete $scope.newUser;
+	        $scope.login(true);
+	    }, function(response) {
+	    	console.log(response.data.errors)
+	    });		    		
 	}
 
 });
