@@ -18,8 +18,7 @@ angular.module('hackathon', [
 .run(function($rootScope, $location, System) {
   $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute) {
     var logged = sessionStorage.getItem('token') ? true : false;
-    var appTo = currRoute.$$route.originalPath;
-    debugger;    
+    var appTo = currRoute.$$route.originalPath;  
     if (appTo != '/login' && !logged) {
       event.preventDefault();
       $location.path('/login');

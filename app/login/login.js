@@ -34,8 +34,8 @@ angular.module('hackathon.login', ['ngRoute'])
 		if (valid) {
 			$http.post(app.domain + "/login", $scope.user)
 		    .then(function(response) {
-		    	var authorization = response.headers();
-		        sessionStorage.setItem("token", authorization['authorization']);
+		    	var header = response.headers();
+		        sessionStorage.setItem("token", header['authorization']); 		        
 		        delete $scope.user;
 		    	$window.location.reload();
 		    });

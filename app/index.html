@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body ng-controller="SystemCtrl">
@@ -29,6 +30,7 @@
           </md-nav-bar> -->
           <md-toolbar class="md-hue-2" ng-if="status"> 
             <div class="md-toolbar-tools">
+            <img ng-src="img/logo.png" style="width:45px; height:auto; padding-right: 4px;" class="md-avatar" />
               <h2 flex md-truncate>Friend Funding</h2>
               <md-button class="md-icon-button" aria-label="home" ng-click="back()">
                 <i class="material-icons">home</i>
