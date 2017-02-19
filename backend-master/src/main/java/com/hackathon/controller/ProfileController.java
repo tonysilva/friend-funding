@@ -60,5 +60,10 @@ public class ProfileController {
 			return new ResponseEntity<>(profileFriend.getFriends(), HttpStatus.OK);
 		}
 	}
+
+	@RequestMapping(value="/all", method=RequestMethod.GET)
+	public ResponseEntity<?> getAllProfiles() {		
+		return new ResponseEntity<>(profileRepository.findAll(), HttpStatus.OK);
+	}
 	
 }

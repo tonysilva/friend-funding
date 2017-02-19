@@ -1,0 +1,22 @@
+<md-dialog aria-label="Contribuir">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Usuários</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="material-icons">close</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-list ng-cloak layout-padding>
+          <md-list-item ng-repeat="value in profiles" ng-click="sendInvite(value.id)" class="noright">
+            <span>{{value.name}}</span>
+          </md-list-item>
+        </md-list>
+      </div>
+    </md-dialog-content>
+  </form>
+</md-dialog>
