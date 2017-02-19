@@ -14,16 +14,15 @@ angular.module('hackathon.contribution', ['ngRoute'])
 	$scope.wish = WishContributionService.wish;
 	$scope.contributions = [];
 	$scope.renderContribute = true;
-	//var prof = sessionStorage.getItem("profile");
 
-	/*if (WishContributionService.wish.profile.id == sessionStorage.getItem("profile").id) {
-		$scope.renderContribute = false
-	}*/
+	$scope.getDonated = function() {
+		$http.get(app.domain + "/wishes/" + WishContributionService.wish.id + "/donated")
+		.then(function(response) {
+		  $scope.donated = response.data;
+		});	
+	}
 
-	$http.get(app.domain + "/wishes/" + WishContributionService.wish.id + "/donated")
-	.then(function(response) {
-	  $scope.donated = response.data;
-	});
+	$scope.getDonated();
 
 	$scope.getContributions = function() {
 		$http.get(app.domain + "/contributions/" + WishContributionService.wish.id)
@@ -55,31 +54,9 @@ angular.module('hackathon.contribution', ['ngRoute'])
 	  	$http.post(app.domain + "/contributions?wishid=" + WishContributionService.wish.id, contribution)
 		.then(function(response) {
 		  $scope.contributions.push(response.data);
-		  //$scope.showCustomToast();	
+		  $scope.getDonated();	
 		});
 	  } 
-
-	  /*$scope.showCustomToast = function() {
-        $mdToast.show({
-          hideDelay   : 3000,
-          position    : 'top right',
-          controller  : 'ToastCtrl',
-          textContent : 'toast-template.html'
-        });
-      };
-
-      function ToastCtrl($scope, $mdToast, $mdDialog) {
-	      $scope.closeToast = function() {
-	        if (isDlgOpen) return;
-	        $mdToast
-	          .hide()
-	          .then(function() {
-	            isDlgOpen = false;
-	          });
-	      };
-	  }*/
-
-      //$scope.showCustomToast();
 
 	  function DialogController($scope, $mdDialog) {
 	    $scope.hide = function() {
