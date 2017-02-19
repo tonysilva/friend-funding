@@ -1,14 +1,35 @@
 <div layout-padding></div>
+
+
 <md-content layout="row">
-	<img flex="10" data-ng-src="data:image/jpg;base64,{{wish.profile.profileImg}}" style="width:90px; height:auto;" class="md-avatar" />
-	<div flex>
-		aksdka;lsdka
+	<div flex="15" layout-padding>
+		<img class="user" data-ng-src="data:image/jpg;base64,{{wish.profile.profileImg}}" style="width:90px; height:auto;" />	
 	</div>
-	<div flex="10">
-		aksdka;lsdka
+	<div flex>
+		<div class="md-list-item-text">
+			<h5 style="margin-bottom: 0">{{wish.profile.name}}</h5>
+			<h3 style="margin:0">{{wish.name}}</h3>
+			<h4 class="md-body-2" style="margin:0">{{wish.description}}</h4>
+			<p style="margin:0">{{wish.totalValue | currency : R$ }}</p>
+			<p style="margin:0">Total Arrecadado: {{donated | currency : R$ }}</p>
+		</div>	
+	</div>
+	<div flex="15" layout-padding>
+		<md-button ng-if="renderContribute" class="md-raised md-primary" style="width:100%; margin: 30px 0px;" ng-click="showAdvanced($event)">Contribuir</md-button>
 	</div>
 </md-content>
 
-<md-content layout="row">
-
+<md-content layout-padding>
+    <md-list class="md-dense" flex>
+        <md-subheader class="md-no-sticky">Contribuições Para este Desejo</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="(key, value) in contributions">
+        	<img class="md-avatar" data-ng-src="data:image/jpg;base64,{{value.contributor.profileImg}}" />	
+			<div class="md-list-item-text" layout="column" layout-fill>
+				<h3>{{value.contributor.name}}</h3>
+				<h3 class="md-title">{{value.date | date: 'dd MMMM, yyyy'}}</h3>
+				<h4 class="md-body-2">{{value.value | currency : R$ }}</h4>
+				<p></p>
+			</div>						
+        </md-list-item>
+	</md-list>
 </md-content>

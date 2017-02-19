@@ -7,6 +7,7 @@ angular.module('hackathon', [
   'hackathon.system',
   'hackathon.wish',
   'hackathon.contribution',
+  'hackathon.profile',
   'hackathon.version',
   'ngMaterial',
   'ngResource',

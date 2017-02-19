@@ -19,6 +19,10 @@ angular.module('hackathon.system', [])
 		System.logout();		
 	}
 
+    $scope.back = function() {
+        $location.path('/home');
+    }
+
 	$scope.status = System.status;
 
 });

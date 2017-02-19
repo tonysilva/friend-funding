@@ -46,17 +46,16 @@
 
 #avatar {
 	margin-top: 4%;
-  background-image: url('img/logo.png');
-  width: 150px;
-  height: 150px;
+  /*background-image: url('https://gulfcoastjewishfamilyandcommunityservices.org/refugee/files/2011/04/RWCG-Image.png'); */
+  background-image: url('http://i.stack.imgur.com/Dj7eP.jpg');
   background-size: cover;
   background-position: center;
   border-radius: 50%;
 }
 
-#user {
+.user {
   margin-top: 2%;
-  background-image: url('http://i.stack.imgur.com/Dj7eP.jpg');
+  /*background-image: url('http://i.stack.imgur.com/Dj7eP.jpg');*/
   width: 90px;
   height: 90px;
   background-size: cover;

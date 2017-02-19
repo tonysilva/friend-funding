@@ -1,16 +1,16 @@
 <div layout-padding></div>
-<md-list ng-cloak layout-padding>
-	<md-list-item ng-click="" class="noright">
-		<img data-ng-src="data:image/jpg;base64,{{profile.profileImg}}" data-err-src="img/profile.jpg" style="width:90px; height:auto;" class="md-avatar" />
-		<md-input-container flex="100">
-			<label>Desejo</label>
-			<input type="text" name="desejo" ng-model="wish" placeholder="Ol&aacute; {{profile.name}}, qual &eacute; o seu desejo?" />
-		</md-input-container>		
-		<md-button class="md-icon-button" ng-click="openWish(wish)">		
-			<i class="material-icons">send</i>
-		</md-button>
-	</md-list-item>
-</md-list>
+<md-content layout="row">
+	<div flex="15" layout-padding>
+		<img class="user" data-ng-src="data:image/jpg;base64,{{profile.profileImg}}" style="width:90px; height:auto;" />	
+	</div>
+	<div flex>
+		<div class="md-list-item-text">
+			<h5 style="margin-bottom: 0">{{profile.name}}</h5>
+			<h3 style="margin:0">{{profile.email}}</h3>
+			<h4 class="md-body-2" style="margin:0">{{profile.url}}</h4>
+		</div>	
+	</div>
+</md-content>
 
 <div layout="row" layout-xs="column">
 	<div layout="column" flex="40" flex-xs="40">
@@ -41,8 +41,7 @@
 				                  md-colspan="1"
 				                  md-colspan-sm="1"
 				                  md-colspan-xs="1"
-				                  ng-class="tile.background"
-				                  ng-click="openFriend(value.id)" style="cursor: pointer;">
+				                  ng-class="tile.background">
 				      <img data-ng-src="data:image/jpg;base64,{{value.profileImg}}" data-err-src="img/profile.jpg" style="width:100%; height:auto;" class="md-avatar" />
 				      <md-grid-tile-footer><h3>{{value.name}}</h3></md-grid-tile-footer>		      
 				    </md-grid-tile>			
@@ -63,9 +62,6 @@
 						<h4>{{value.description}}</h4>
 						<p>{{value.totalValue | currency : R$ }}</p>
 					</div>
-					<md-button class="md-icon-button" ng-click="openWishContribution(value); $stopPropagation();" style="top:20px">		
-						<i class="material-icons">loyalty</i>
-					</md-button>
 					<md-divider></md-divider>
 		        </md-list-item>
 			</md-list>

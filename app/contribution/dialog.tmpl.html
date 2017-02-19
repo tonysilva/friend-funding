@@ -1,0 +1,26 @@
+<md-dialog aria-label="Contribuir">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Contribuir</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="material-icons">close</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-input-container flex-gt-sm flex-xs="100">
+            <label>Valor da Contribuição</label>
+            <input type="number" ng-model="value" />
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="answer(value)">
+       Contribuir
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
