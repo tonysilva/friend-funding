@@ -7,11 +7,11 @@ angular.module('hackathon', [
   'hackathon.version',
   'ngMaterial',
   'ngResource'
-]).
+])
 .service('app', function () {
   this.domain = 'http://192.168.1.180:8080';
 })
-config(function ($locationProvider, $routeProvider) {
+.config(function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
   $routeProvider.otherwise({redirectTo: '/home'});
 })
