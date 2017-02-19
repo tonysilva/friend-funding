@@ -4,6 +4,7 @@ angular.module('hackathon', [
   'ngRoute',
   'hackathon.home',
   'hackathon.login',
+  'hackathon.system',
   'hackathon.version',
   'ngMaterial',
   'ngResource'
@@ -38,4 +39,16 @@ angular.module('hackathon', [
             }
         }
     }
-);
+)
+
+.run(function($rootScope, $location, System) {
+    $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute) {
+      debugger;
+      var logged = System.status;
+      var appTo = currRoute.$$route.originalPath;
+      if(appTo != '/login' && !logged) {
+          event.preventDefault();
+          $location.path('/login');
+      }
+    });
+});

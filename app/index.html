@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
-  <div layout="row" style="height:100%;">
+<body ng-controller="SystemCtrl">
+  <div layout="row">
     <div layout="column" flex ng-cloak>
       <div flex id="c1">
         <md-content>
@@ -27,6 +27,14 @@
             <md-nav-item md-nav-href="#!/home" name="home">Home</md-nav-item>
             <md-nav-item md-nav-href="#!/login" name="login">Login</md-nav-item>
           </md-nav-bar> -->
+          <md-toolbar class="md-hue-2" ng-if="status"> 
+            <div class="md-toolbar-tools">
+              <h2 flex md-truncate>Friend Funding</h2>
+              <md-button class="md-icon-button" aria-label="account" ng-click="logout()">
+                <i class="material-icons">account_box</i>
+              </md-button>
+            </div>
+          </md-toolbar>
           <div>
             <div ng-view></div>
           </div>
@@ -46,8 +54,9 @@
   <script src="/bower_components/angular-material/angular-material.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.js"></script>
   <script src="app.js"></script>
+  <script src="system.module.js"></script>
   <script src="home/home.js"></script>
-  <script src="login/login.js"></script>
+  <script src="login/login.js"></script>  
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
